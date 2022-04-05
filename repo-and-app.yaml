@@ -1,0 +1,39 @@
+apiVersion: v1
+stringData:
+  password: $GITLAB_TOKEN # Token here!
+  project: default
+  type: git
+  url: https://somegitrepo.com/infra/argocd.git # Repo url
+  username: git
+kind: Secret
+metadata:
+  annotations:
+    managed-by: argocd.argoproj.io
+  labels:
+    argocd.argoproj.io/secret-type: repository
+  name: git-repository
+  namespace: argocd
+type: Opaque
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+spec:
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: testapp
+    repoURL: https://somegitrepo.com/infra/argocd.git # Repo url
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
