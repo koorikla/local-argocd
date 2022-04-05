@@ -1,9 +1,11 @@
 ## Dependencys
 
- - Docker desktop (running, kind installs k8s cluster into docker!)
+ - Docker desktop (running! Kind installs k8s cluster into docker)
  - kubectl, kind, helm, k9s(reccomended)
 
 ## Setup dependencys on osx with homebrew
+
+All of the dependencys are multiplatform and can be used on osx, linux and windows
 
 `brew cask install docker`
 
@@ -24,6 +26,4 @@
 2. Sync kafka cluster, user and topic
 
 
-If you want to see the full helm config options (limited in helm) you can download the chart via helm pull
-
-`argo/argo-cd --version 4.5.0`
+If you want to see the full helm config options (limited in helm) you can download the chart via `helm pull argo/argo-cd --version 4.5.0`
