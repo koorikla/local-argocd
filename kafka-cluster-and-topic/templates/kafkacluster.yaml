@@ -6,6 +6,8 @@ spec:
   kafka:
     version: 3.1.0
     replicas: 1
+    authorization: (1)
+      type: simple    
     listeners:
       - name: plain
         port: 9092

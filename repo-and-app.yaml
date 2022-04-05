@@ -39,8 +39,9 @@ spec:
     - CreateNamespace=true
 
 ---
+## Starting from here are advanced operators and CRD's
 
-# Example kafka cluster operator
+# Strimzy kafka cluster operator that manages kafka clusters inside of k8s
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -58,12 +59,14 @@ spec:
       - values.yaml
     path: helm-charts/helm3/strimzi-kafka-operator/
     repoURL: https://github.com/strimzi/strimzi-kafka-operator.git 
-    targetRevision: master
+    targetRevision: 0.28.0
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
 
 ---
+
+# ArgoCD can manage ArgoCD itself
 
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -80,7 +83,7 @@ spec:
       valueFiles:
       - values.yaml
     path: charts/argo-cd/
-    repoURL: https://github.com/argoproj/argo-helm.git # ArgoCD can manage ArgoCD itself
+    repoURL: https://github.com/argoproj/argo-helm.git 
     targetRevision: master
   syncPolicy:
     syncOptions:
@@ -88,14 +91,16 @@ spec:
 
 ---
 
+# Custom helmchart that Deploys CRD-s (Strimzy kafka cluster, topic and user)
+
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: test
+  name: kafka-cluster-and-topic-example
   namespace: argocd
 spec:
   destination:
-    namespace: test
+    namespace: strimzy-kafka
     server: https://kubernetes.default.svc
   project: default
   source:
@@ -103,7 +108,7 @@ spec:
       valueFiles:
       - values.yaml
     path: kafka-cluster-and-topic
-    repoURL: https://github.com/koorikla/local-argocd.git # Repo url to the helmchart, reccomended to put to your own so you can try commiting
+    repoURL: https://github.com/koorikla/local-argocd.git 
     targetRevision: HEAD # Branch
   syncPolicy:
     syncOptions:
