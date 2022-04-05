@@ -6,6 +6,8 @@
 echo "Creating Kind local k8s cluster, if a kind cluster already exists the error is ok"
 kind create cluster --config local-kind-cluster-non-HA.yaml
 
+kubectl config use-context kind
+
 echo "Now since the local cluster is up i'd reccomend to start k9s around now to see what is being deployed, just run 'k9s' in a seperate terminal"
 echo "And press 0 to see all pods (if it opens in pod view by default :pod if not)"
 
