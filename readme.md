@@ -4,7 +4,9 @@
  - kubectl, kind, helm, k9s(reccomended)
 
 `brew cask install docker`
+
 `brew install kubectl kind helm k9s`
+
 `helm repo add argo https://argoproj.github.io/argo-helm`
 
 1. Install dependencys, ensure docker desktop is up and running
@@ -13,4 +15,6 @@
 4. run ./local-cluster.sh and follow instructions
 
 
-If you want to see the full helm config options (limited in helm) you can download the chart via helm pull `argo/argo-cd --version 4.5.0`
+If you want to see the full helm config options (limited in helm) you can download the chart via helm pull
+
+`argo/argo-cd --version 4.5.0`
