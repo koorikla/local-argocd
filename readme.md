@@ -3,7 +3,7 @@
  - Docker desktop (running, kind installs k8s cluster into docker!)
  - kubectl, kind, helm, k9s(reccomended)
 
-## Setuop on osx
+## Setup dependencys on osx with homebrew
 
 `brew cask install docker`
 
