@@ -32,8 +32,79 @@ spec:
       valueFiles:
       - values.yaml
     path: testapp
-    repoURL: https://somegitrepo.com/infra/argocd.git # Repo url
-    targetRevision: HEAD
+    repoURL: https://github.com/koorikla/local-argocd.git # Repo url to the helmchart, reccomended to put to your own so you can try commiting
+    targetRevision: HEAD # Branch
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+
+# Example kafka cluster operator
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: strimzy-kafka-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: strimzy-kafka
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: helm-charts/helm3/strimzi-kafka-operator/
+    repoURL: https://github.com/strimzi/strimzi-kafka-operator.git 
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: charts/argo-cd/
+    repoURL: https://github.com/argoproj/argo-helm.git # ArgoCD can manage ArgoCD itself
+    targetRevision: master
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+spec:
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: kafka-cluster-and-topic
+    repoURL: https://github.com/koorikla/local-argocd.git # Repo url to the helmchart, reccomended to put to your own so you can try commiting
+    targetRevision: HEAD # Branch
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
