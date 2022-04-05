@@ -1,13 +1,17 @@
-# Dependencys
+## Dependencys
 
  - Docker desktop (running, kind installs k8s cluster into docker!)
  - kubectl, kind, helm, k9s(reccomended)
+
+## Setuop on osx
 
 `brew cask install docker`
 
 `brew install kubectl kind helm k9s`
 
 `helm repo add argo https://argoproj.github.io/argo-helm`
+
+# Quick guide
 
 1. Install dependencys, ensure docker desktop is up and running
 2. Create a git repo, change creds in repo-and-app.yaml accoringly. In case of HTTPS auth and access token you only need to change url and token.
