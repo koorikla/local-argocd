@@ -1,4 +1,4 @@
-# Walkthrough of k8s and ArgoCD functionality
+# Walkthrough of k8s and ArgoCD
 
  - Creates local k8s cluster into Docker (kind)
  - Deploys ArgoCD operator into it
