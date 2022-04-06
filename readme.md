@@ -2,7 +2,8 @@
 
  - Creates local k8s cluster into Docker (kind)
  - Deploys ArgoCD operator into it
- - Sets up ArgoCD to maintain/update itself as a ArgoApp against a community maintained chart's fixed version *only for development enviroments
+ - Sets up ArgoCD to maintain/update itself as a ArgoApp against a community maintained chart's fixed version 
+    * only for development enviroments
  - Deploys Strimzy Kafka operator via Argo 
  - Deploys a Strimzy Kafka cluster, topic and user custom helm chart via Argo
 
