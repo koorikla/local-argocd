@@ -35,8 +35,10 @@ spec:
     repoURL: https://github.com/koorikla/local-argocd.git # Repo url to the helmchart, reccomended to put to your own so you can try commiting
     targetRevision: HEAD # Branch
   syncPolicy:
+    automated: {}
     syncOptions:
     - CreateNamespace=true
+
 
 ---
 ## Starting from here are advanced operators and CRD's
