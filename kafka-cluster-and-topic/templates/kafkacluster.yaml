@@ -5,7 +5,7 @@ metadata:
 spec:
   kafka:
     version: 3.1.0
-    replicas: 1
+    replicas: 2
     authorization:
       type: simple
       superUsers:
