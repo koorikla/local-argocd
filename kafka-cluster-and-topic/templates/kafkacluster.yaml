@@ -5,7 +5,7 @@ metadata:
 spec:
   kafka:
     version: 3.1.0
-    replicas: 2
+    replicas: 3
     authorization:
       type: simple
       superUsers:
@@ -36,7 +36,7 @@ spec:
         size: 100Gi
         deleteClaim: false
   zookeeper:
-    replicas: 1
+    replicas: 3
     storage:
       type: persistent-claim
       size: 100Gi
