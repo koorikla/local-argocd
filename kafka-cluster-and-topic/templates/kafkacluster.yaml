@@ -6,8 +6,11 @@ spec:
   kafka:
     version: 3.1.0
     replicas: 1
-    # authorization:
-    #   type: simple    
+    authorization:
+      type: simple
+      superUsers:
+        - my-user
+        - ANONYMOUS # For testing CLI tools with quay.io/strimzi/kafka native containers
     listeners:
       - name: plain
         port: 9092
