@@ -10,6 +10,7 @@ spec:
       type: simple
       superUsers:
         - my-user
+        - test
         - ANONYMOUS # For testing CLI tools with quay.io/strimzi/kafka native containers
     listeners:
       - name: plain
