@@ -25,6 +25,8 @@
 
 `helm repo add argo https://argoproj.github.io/argo-helm`
 
+`helm repo update`
+
 # Quick guide
 
 1. Install dependencys, ensure docker desktop is up and running
