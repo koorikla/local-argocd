@@ -73,7 +73,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd
+  name: argo-cd
   namespace: argocd
 spec:
   destination:
@@ -86,7 +86,7 @@ spec:
       - values.yaml
     path: charts/argo-cd/
     repoURL: https://github.com/argoproj/argo-helm.git 
-    targetRevision: master
+    targetRevision: main
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
