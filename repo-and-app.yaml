@@ -115,3 +115,27 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2023-04-24T23:21:47Z"
+  generation: 20
+  name: argo-workflows
+  namespace: argocd
+  resourceVersion: "2997"
+  uid: 35fc1a84-e681-4450-89eb-c1679d194e5d
+spec:
+  destination:
+    namespace: argo-workflows
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: argo-workflows
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 0.25.1
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

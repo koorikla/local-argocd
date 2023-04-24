@@ -20,7 +20,7 @@ echo "Now since the local cluster is up i'd reccomend to start k9s and navigate 
 echo "And press 0 to see all namespaces at once (hopefully it opens in pod view by default, type ':pod' and press enter if not)"
 
 echo "Deploying ArgoCD"
-helm upgrade --install argo-cd argo/argo-cd --version 5.19.8 -n argocd --create-namespace --wait
+helm upgrade --install argo-cd argo/argo-cd --version 5.29.1 -n argocd --create-namespace --wait
 
 echo "Pushing repo creds and argoApplication CRD's to argoCD"
 kubectl apply -f repo-and-app.yaml
